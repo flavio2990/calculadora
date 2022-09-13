@@ -5,11 +5,12 @@ const log= () => {
     console.log("hello") 
 }
 
-const Buttons= () => {
+const Buttons= (props) => {
     return <Button
     onPress={log}
-    title="Numbers"
-    color="blue"
+    title= {props.value ? props.value : "nothing"}
+    color="black"
+    
   />
 }
 

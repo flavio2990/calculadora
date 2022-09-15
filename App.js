@@ -12,9 +12,13 @@ export default function App() {
   }
 
   const clear = () => {
-    setCalculation('');
+    setCalculation('')
   }
 
+  const deleteOne = () => {
+    const newValue= calculation.slice(0, -1)
+    setCalculation(newValue)
+  }
   return (
     <View style={styles.container}>
       <Display value={calculation} />
@@ -37,7 +41,7 @@ export default function App() {
       <Buttons value='/' />
       <Buttons value='=' />
       <Buttons value='C' onPress={() => clear()} />
-      <Buttons value='D' />
+      <Buttons value='D' onPress={() => deleteOne()} />
       <Buttons value='.' onPress={() => onPressValue(".")} />
 
       <StatusBar style="auto" />

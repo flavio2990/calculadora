@@ -7,7 +7,7 @@ const log= () => {
 
 const Buttons= (props) => {
     return <Button
-    onPress={log}
+    onPress={props.onPress ? props.onPress : log}
     title= {props.value ? props.value : "nothing"}
     color="black"
     

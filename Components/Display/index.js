@@ -6,7 +6,7 @@ const Display = (props) => {
   return (<View style={{
     width: "100%", height: 80,
     backgroundColor: 'grey',
-  }}><Text style={{ color: "red" }}>{props.value}</ Text></View>)
+  }}><Text style={{ color: "red", fontSize: 20 }}>{props.value}</ Text></View>)
 }
 
 export default Display

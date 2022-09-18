@@ -5,25 +5,44 @@ import Display from './Components/Display';
 import React, { useState } from 'react';
 
 export default function App() {
-  const [calculation, setCalculation] = useState('');
+  const [displayValue, setDisplayValue] = useState('');
+  const [savedValue, setSavedValue] = useState('');
+  const [operation, setOperation] = useState('');
+
   const onPressValue = (value) => {
 
-    setCalculation(calculation + value)
+    setDisplayValue(displayValue + value)
   }
 
   const clear = () => {
-    setCalculation('')
+    setDisplayValue('')
   }
 
   const deleteOne = () => {
-    const newValue= calculation.slice(0, -1)
-    setCalculation(newValue)
+    const newValue= displayValue.slice(0, -1)
+    setDisplayValue(newValue)
   }
+
+  const operate= (op) => {
+    setSavedValue(displayValue)
+    setDisplayValue("")
+    setOperation(op)
+  }
+
+  const calculate= () => {
+    switch (operation){
+      case "substraction": 
+        setDisplayValue(savedValue-displayValue)
+        break
+      case "multiplication": 
+        setDisplayValue(savedValue*displayValue)
+        break
+    }
+  }
+
   return (
     <View style={styles.container}>
-      <Display value={calculation} />
-
-
+      <Display value={displayValue} />
 
       <Buttons value='1' onPress={() => onPressValue("1")} />
       <Buttons value='2' onPress={() => onPressValue("2")} />
@@ -35,13 +54,13 @@ export default function App() {
       <Buttons value='8' onPress={() => onPressValue("8")} />
       <Buttons value='9' onPress={() => onPressValue("9")} />
       <Buttons value='0' onPress={() => onPressValue("0")} />
-      <Buttons value='-' />
-      <Buttons value='+' />
+      <Buttons value='-' onPress={() => operate("substraction")} />
+      <Buttons value='+' onPress={() => operate("addition")} />
       <Buttons value='x' />
       <Buttons value='/' />
-      <Buttons value='=' />
-      <Buttons value='C' onPress={() => clear()} />
-      <Buttons value='D' onPress={() => deleteOne()} />
+      <Buttons value='=' onPress={() => calculate()} />
+      <Buttons value='Clear' onPress={() => clear()} />
+      <Buttons value='Delete' onPress={() => deleteOne()} />
       <Buttons value='.' onPress={() => onPressValue(".")} />
 
       <StatusBar style="auto" />

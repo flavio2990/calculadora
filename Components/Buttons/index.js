@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button} from 'react-native';
+import { Button} from '@ui-kitten/components';
 
 const log= () => {
     console.log("hello") 
@@ -8,10 +8,9 @@ const log= () => {
 const Buttons= (props) => {
     return <Button
     onPress={props.onPress ? props.onPress : log}
-    title= {props.value ? props.value : "nothing"}
     color="black"
     
-  />
+  >{props.value ? props.value :''}</Button>
 }
 
 export default Buttons

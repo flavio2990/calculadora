@@ -1,16 +1,15 @@
-import React from 'react';
-import { Button} from '@ui-kitten/components';
+// import React from 'react';
+// import { Button, Layout,ButtonGroup} from '@ui-kitten/components';
+// import { StyleSheet } from 'react-native';
 
-const log= () => {
-    console.log("hello") 
-}
 
-const Buttons= (props) => {
-    return <Button
-    onPress={props.onPress ? props.onPress : log}
-    color="black"
-    
-  >{props.value ? props.value :''}</Button>
-}
 
-export default Buttons
+// const Buttons = (props) => {
+//   return <Button
+//     onPress={props.onPress ? props.onPress : log}
+//   >{props.value ? props.value : ''}
+//   </Button>
+// };
+
+
+// export default Buttons

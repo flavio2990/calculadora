@@ -1,10 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import Button from './Components/Buttons';
 import Display from './Components/Display';
 import React, { useState } from 'react';
 import { ApplicationProvider } from '@ui-kitten/components';
+import Buttons from './Components/OwnButtons';
 import * as eva from '@eva-design/eva';
+
 
 export default function App() {
   const [displayValue, setDisplayValue] = useState(null);
@@ -43,55 +45,46 @@ export default function App() {
         setResolvedValue(savedValue / displayValue)
         break
       case "addition":
-        setResolvedValue(savedValue + displayValue)
+        setResolvedValue(savedValue + displayValue, '+')
     }
   }
 
   return (
-    <ApplicationProvider {...eva} theme={eva.light}>
-      <View style={styles.container}>
-        <Display value={displayValue + " " + operation + " " + savedValue} resolved={resolvedValue} />
-
-        <Button value='1' onPress={() => onPressValue(1)} />
-        <Button value='2' onPress={() => onPressValue(2)} />
-        <Button value='3' onPress={() => onPressValue(3)} />
-        <Button value='4' onPress={() => onPressValue(4)} />
-        <Button value='5' onPress={() => onPressValue(5)} />
-        <Button value='6' onPress={() => onPressValue(6)} />
-        <Button value='7' onPress={() => onPressValue(7)} />
-        <Button value='8' onPress={() => onPressValue(8)} />
-        <Button value='9' onPress={() => onPressValue(9)} />
-        <Button value='0' onPress={() => onPressValue(0)} />
-        <Button value='-' onPress={() => operate("substraction")} />
-        <Button value='+' onPress={() => operate("addition")} />
-        <Button value='x' onPress={() => operate("multiplication")} />
-        <Button value='/' onPress={() => operate("division")} />
-        <Button value='=' onPress={() => calculate()} />
-        <Button value='Clear' onPress={() => clear()} />
-        <Button value='Delete' onPress={() => deleteOne()} />
-        <Button value='.' onPress={() => onPressValue(".")} />
-
+      <View style={buttonStyles.container}>
+        <Display value={savedValue + " " + operation + " " + displayValue} resolved={resolvedValue} />
+          <Buttons value='1' onPress={() => onPressValue(1)} />
+          <Buttons value='2' onPress={() => onPressValue(2)} />
+          <Buttons value='3' onPress={() => onPressValue(3)} />
+          <Buttons value='4' onPress={() => onPressValue(4)} />
+          <Buttons value='5' onPress={() => onPressValue(5)} />
+          <Buttons value='6' onPress={() => onPressValue(6)} />
+          <Buttons value='7' onPress={() => onPressValue(7)} />
+          <Buttons value='9' onPress={() => onPressValue(9)} />
+          <Buttons value='0' onPress={() => onPressValue(0)} />
+          <Buttons value='-' onPress={() => operate("substraction")} />
+          <Buttons value='8' onPress={() => onPressValue(8)} />
+          <Buttons value='+' onPress={() => operate("addition")} />
+          <Buttons value='x' onPress={() => operate("multiplication")} />
+          <Buttons value='/' onPress={() => operate("division")} />
+          <Buttons value='=' onPress={() => calculate()} />
+          <Buttons value='Clear' onPress={() => clear()} />
+          <Buttons value='Del' onPress={() => deleteOne()} />
+          <Buttons value='.' onPress={() => onPressValue(".")} />
         <StatusBar style="auto" />
       </View>
-    </ApplicationProvider >
   );
 }
 
-const styles = StyleSheet.create({
+const buttonStyles = StyleSheet.create({
   container: {
-
     flex: 1,
-    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal: 16,
-    marginVertical: 20,
-    width: 450,
+    marginLeft: 'auto',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    paddingVertical: 90,
-
+    paddingVertical: '10%',
+    // maxWidth: "25%",
   },
-
 });
 
